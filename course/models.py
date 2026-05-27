@@ -73,3 +73,23 @@ class Submission(models.Model):
     )
 
     choices = models.ManyToManyField(Choice)
+
+class Learner(models.Model):
+
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE
+    )
+
+    occupation = models.CharField(
+        max_length=100,
+        blank=True
+    )
+
+    social_link = models.CharField(
+        max_length=200,
+        blank=True
+    )
+
+    def __str__(self):
+        return self.user.username
